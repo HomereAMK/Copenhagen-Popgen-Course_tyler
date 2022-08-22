@@ -593,7 +593,7 @@ What pecentage of sites was removed (discounting those with entirely missing dat
 <summary> Click here for help </summary>
 
 ```bash
-$BCFTOOLS query -f "%POS\n" $DIR/output/calmas_allsites.bcf.gz | wc -l
+bcftools query -f "%POS\n" $DIR/output/calmas_allsites.bcf.gz | wc -l
 # 995197 sites had some data initially
 
 wc -l $DIR/output/qc_sites.pos
