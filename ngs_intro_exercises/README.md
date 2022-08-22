@@ -1,4 +1,4 @@
-INTRODUCTION TO NGS DATA EXERCISES
+INTRODUCTION TO NGS DATA EXERCISES --- HOMERE MODIFICATIONS
 ==================================
 
 For these exercises we will use exome capture data from the Peruvian mimic poison dart frog, *Ranitomeya imitator*, mapped to a *de novo* exome assembly.
