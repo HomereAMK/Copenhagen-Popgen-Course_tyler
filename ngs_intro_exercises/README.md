@@ -450,9 +450,9 @@ Generate a VCF with some info that we can base quality control on. We'll use the
 so be patient).
 
 ```bash
-$BCFTOOLS mpileup -f $CICHREF -b $BAMLIST \
+bcftools mpileup -f $CICHREF -b $BAMLIST \
 -d 40000 -L 40000 -r chr7:1-1000000 -q 13 -Q 13 --ff UNMAP,SECONDARY,QCFAIL,DUP -a FORMAT/AD,FORMAT/DP,QS,FORMAT/SCR,INFO/AD,INFO/SCR -p O u \
-| $BCFTOOLS call --ploidy 2 -a PV4,GQ,GP -m -P 0.001 -O u | $BCFTOOLS +fill-tags -O b -o $DIR/output/calmas_allsites.bcf.gz -- -t'AF,NS,ExcHet'
+| bcftools call --ploidy 2 -a PV4,GQ,GP -m -P 0.001 -O u | bcftools +fill-tags -O b -o $DIR/output/calmas_allsites.bcf.gz -- -t'AF,NS,ExcHet'
 ```
 
 ```bash
