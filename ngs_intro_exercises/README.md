@@ -43,13 +43,13 @@ Set some environmental variables required for subsequent steps
 	#BCFTOOLS=$DATDIR/prog/bin/bcftools
 	#ANGSD=/home/projects/dp_00007/people/hmon/SummerCPH22/tyler/prog/bin/angsd
 
-module load tools computerome_utils/2.0
-module load htslib/1.13
-module load bedtools/2.30.0
-module load pigz/2.3.4
-module load parallel/20210722
-module load angsd/0.937
-module load bcftools/1.14
+	module load tools computerome_utils/2.0
+	module load htslib/1.13
+	module load bedtools/2.30.0
+	module load pigz/2.3.4
+	module load parallel/20210722
+	module load angsd/0.937
+	module load bcftools/1.14
 
 ## fastq file format and quality
 
