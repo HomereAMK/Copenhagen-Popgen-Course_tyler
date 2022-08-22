@@ -29,18 +29,27 @@ The goal of today is to learn how to prepare raw NGS data for downstream analyse
 Set some environmental variables required for subsequent steps
 	
 	# set up directories
-	mkdir ~/ngs_intro && mkdir ~/ngs_intro/output
+	cd /home/projects/dp_00007/people/hmon/SummerCPH22/
+	mkdir ngs_intro && mkdir ngs_intro/output
 
 	# set environment variables
-	DIR=~/ngs_intro
-	DATDIR=/ricco/data/tyler
-	IGV=$DATDIR/prog/IGV_Linux_2.9.4/igv.sh
+	DIR=/home/projects/dp_00007/people/hmon/SummerCPH22/ngs_intro
+	DATDIR=/home/projects/dp_00007/people/hmon/SummerCPH22/tyler
+	#IGV=$DATDIR/prog/IGV_Linux_2.9.4/igv.sh
 	BAMLIST=$DATDIR/cichlid_bams.list
 	CICHREF=$DATDIR/ref/GCA_900246225.3_fAstCal1.2_genomic_chromnames_mt.fa
 	BAMDIR=$DATDIR/bams
 	SCRIPTS=$DATDIR/scripts
-	BCFTOOLS=$DATDIR/prog/bin/bcftools
-	ANGSD=/ricco/data/tyler/prog/bin/angsd
+	#BCFTOOLS=$DATDIR/prog/bin/bcftools
+	#ANGSD=/home/projects/dp_00007/people/hmon/SummerCPH22/tyler/prog/bin/angsd
+
+module load tools computerome_utils/2.0
+module load htslib/1.13
+module load bedtools/2.30.0
+module load pigz/2.3.4
+module load parallel/20210722
+module load angsd/0.937
+module load bcftools/1.14
 
 ## fastq file format and quality
 
