@@ -36,6 +36,15 @@ CICHREF=$DATDIR/ref/GCA_900246225.3_fAstCal1.2_genomic_chromnames_mt.fa
 BAMDIR=$DATDIR/bams
 SCRIPTS=$DATDIR/scripts
 #ANGSD=/ricco/data/tyler/prog/bin/angsd
+
+
+module load tools computerome_utils/2.0
+module load htslib/1.13
+module load bedtools/2.30.0
+module load pigz/2.3.4
+module load parallel/20210722
+module load angsd/0.937
+module load bcftools/1.14
 ```
 If you did not yet complete the Introduction to NGS Data excercises you'll need to copy over the quality controlled list of sites,
 which I've provided a copy of (skip the following step if you completed the bcftools filtering):
