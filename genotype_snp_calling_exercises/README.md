@@ -262,7 +262,7 @@ be three minor alleles to consider instead of just one. We'll also skip any site
 `-skipTriallelic 1` (though we should have filtered these out already with our qc_sites.pos file).
 
 ```bash
-angsd -glf10_text $DIR/output/calmas_region.glf.gz -nInd 40 -fai $CICHREF.fai \
+angsd -glf10_text $DIR/output/calmas_region.glf.gz -nInd 21 -fai $CICHREF.fai \
 -doMajorMinor 1 -doMaf 1 -skipTriallelic 1 -out $DIR/output/calmas_region_af
 ```
 
