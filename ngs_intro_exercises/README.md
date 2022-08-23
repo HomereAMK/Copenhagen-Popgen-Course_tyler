@@ -478,6 +478,7 @@ less $DIR/output/allsites_stats.txt
 Let's plot the values and examine the percentiles to get an idea of what extreme values may be for these data.
 ```bash
 $SCRIPTS/plotStatDist.R $DIR/output/allsites_stats.txt $DIR/output/allsites_stats_plot
+rsync -hav hmon@ssh.computerome.dk:/home/projects/dp_00007/people/hmon/SummerCPH22/ngs_analysis/output/* ~/Documents/PhD_course/PopGen\ CPH/
 ```
 
 ```bash
