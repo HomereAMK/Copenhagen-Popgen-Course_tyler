@@ -59,43 +59,6 @@ module load samtools/1.14
 If you did not yet complete the Introduction to NGS Data excercises you'll need to copy over the quality controlled list of sites,
 which I've provided a copy of (skip the following step if you completed the bcftools filtering):
 
-		bcftools filtering
-		#Generate a VCF with some info that we can base quality control on. We'll use the first 1 MB of chr7 for this example. (This will take a little while so be patient).
-
-		bcftools mpileup -f $CICHREF -b $BAMLIST \
-		-d 40000 -L 40000 -r chr7:1-1000000 -q 13 -Q 13 --ff UNMAP,SECONDARY,QCFAIL,DUP -a FORMAT/AD,FORMAT/DP,QS,FORMAT/SCR,INFO/AD,INFO/SCR -p O u \
-		| bcftools call --ploidy 2 -a PV4,GQ,GP -m -P 0.001 -O u | bcftools +fill-tags -O b -o $DIR/output/calmas_allsites.bcf.gz -- -t'AF,NS,ExcHet'
-		# Index the bcf for rapid access to specific regions with 'bcftools view -r ...'
-		bcftools index $DIR/output/calmas_allsites.bcf.gz
-		#The VCF is in compressed binary fomat to save space so we'll have to use bcftools to view it. Let's have a look at the annotations that we can use to filter on. The various VCF statistics are defined in the VCF header. You can print just the head with bcftools 
-		view -h $DIR/output/calmas_allsites.bcf.gz.
-
-		bcftools view $DIR/output/calmas_allsites.bcf.gz | less -S
-		
-		#Lets extract some information for quantities that we might want to examine the distribution of prior to filtering.
-
-		((echo -e "CHROM\tPOS\tDP\tMQ\tSTRAND_BIAS\tBASEQ_BIAS\tMQ_BIAS\tPOS_BIAS\tEXCHET"); \
-		(bcftools query -f "%CHROM\t%POS\t%INFO/DP\t%INFO/MQ\t%INFO/PV4{0}\t%INFO/PV4{1}\t%INFO/PV4{2}\t%INFO/PV4{3}\t%ExcHet\n" $DIR/output/calmas_allsites.bcf.gz)) > $DIR/output/allsites_stats.txt
-		# Have a look ('.' indicates that the value is missing)
-		less $DIR/output/allsites_stats.txt
-		
-		#Let's plot the values and examine the percentiles to get an idea of what extreme values may be for these data.
-
-		$SCRIPTS/plotStatDist.R $DIR/output/allsites_stats.txt $DIR/output/allsites_stats_plot
-		#click here to see quality statistic percentiles and plots
-		rsync -hav hmon@ssh.computerome.dk:/home/projects/dp_00007/people/hmon/SummerCPH22/ngs_analysis/output/* ~/Documents/PhD_course/PopGen\ CPH/
-		
-
-		#Filter the VCF. We'll extract a list of sites that pass quality control cutoffs. We can use these sites with ANGSD tomorrow for downstream inferences.
-
-		bcftools norm -f $CICHREF -m +any $DIR/output/calmas_allsites.bcf.gz \
-		| bcftools view -i 'N_PASS(FMT/DP[0-14] > 2) > 5 && N_PASS(FMT/DP[15-39] > 2) > 5' $DIR/output/calmas_allsites.bcf.gz \
-		| bcftools view -e 'INDEL=1 || INFO/MQ < 25 || INFO/DP > 700 || INFO/PV4[0] < 1.2e-02 || INFO/PV4[1] < 6.4e-21 || INFO/PV4[2] < 2.8e-45 || INFO/PV4[3] < 2.7e-3 || INFO/ExcHet < 5e-06' -M 2 \
-		| bcftools query -f "%CHROM\t%POS\n" > $DIR/output/qc_sites.pos
-		
-		#Can you describe what each of the filters is doing?
-
-		#Lets have a look at our list of quality-controlled sites
 
 
 ```bash
