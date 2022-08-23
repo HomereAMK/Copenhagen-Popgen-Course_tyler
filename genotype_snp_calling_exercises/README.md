@@ -148,7 +148,7 @@ We'll calculate GLs using the SAMtools likelihood model `-GL 1` (see `$ANGSD -GL
 that we can easily examine. This will take ~2.5 minutes.
 
 ```bash
-angsd -b $BAMLIST -ref $CICHREF -r chr7:1-600000 -sites ~/ngs_intro/output/qc_sites.pos \
+angsd -b $BAMLIST -ref $CICHREF -r chr7:1-600000 -sites /home/projects/dp_00007/people/hmon/SummerCPH22/ngs_intro/output/qc_sites.pos \
 -remove_bads 1 -uniqueOnly 1 -only_proper_pairs 1 -minQ 20 -minMapQ 20 -baq 1 -C 50 \
 -setMinDepth 40 -setMaxDepth 700 -doCounts 1 -GL 1 -doGlf 4 -out $DIR/output/calmas_region
 ```
@@ -262,7 +262,7 @@ be three minor alleles to consider instead of just one. We'll also skip any site
 `-skipTriallelic 1` (though we should have filtered these out already with our qc_sites.pos file).
 
 ```bash
-$ANGSD -glf10_text $DIR/output/calmas_region.glf.gz -nInd 40 -fai $CICHREF.fai \
+angsd -glf10_text $DIR/output/calmas_region.glf.gz -nInd 40 -fai $CICHREF.fai \
 -doMajorMinor 1 -doMaf 1 -skipTriallelic 1 -out $DIR/output/calmas_region_af
 ```
 
@@ -302,13 +302,13 @@ the allele frequencies using two different bam lists as input, which is what we'
 ```bash
 # estimate littoral morph allele frequencies (-ref is required for -doMajorMinor 4)
 
-$ANGSD -b $DATDIR/littoral_bams.list -ref $CICHREF -r chr7:1-600000 -sites ~/ngs_intro/output/qc_sites.pos \
+angsd -b $DATDIR/littoral_bams.list -ref $CICHREF -r chr7:1-600000 -sites ~/ngs_intro/output/qc_sites.pos \
 -remove_bads 1 -uniqueOnly 1 -only_proper_pairs 1 -minQ 20 -minMapQ 20 -baq 1 -C 50 -skipTriallelic 1 \
 -GL 1 -doMajorMinor 4 -doMaf 1 -out $DIR/output/calmas_region_af_littoral
 
 # estimate benthic morph allele frequencies
 
-$ANGSD -b $DATDIR/benthic_bams.list -ref $CICHREF -r chr7:1-600000 -sites ~/ngs_intro/output/qc_sites.pos \
+angsd -b $DATDIR/benthic_bams.list -ref $CICHREF -r chr7:1-600000 -sites ~/ngs_intro/output/qc_sites.pos \
 -remove_bads 1 -uniqueOnly 1 -only_proper_pairs 1 -minQ 20 -minMapQ 20 -baq 1 -C 50 -skipTriallelic 1 \
 -GL 1 -doMajorMinor 4 -doMaf 1 -out $DIR/output/calmas_region_af_benthic
 ```
@@ -376,7 +376,7 @@ different from zero, in which case the site is a SNP.
 You can call SNPs based on a particular p-value cutoff using `SNP_pval`, so that's what we'll do for the first 1 MB on chromosome 7
 
 ```bash
-$ANGSD -glf10_text $DIR/output/calmas_region.glf.gz -nInd 40 -fai $CICHREF.fai \
+angsd -glf10_text $DIR/output/calmas_region.glf.gz -nInd 40 -fai $CICHREF.fai \
 -doMajorMinor 1 -doMaf 1 -SNP_pval 1e-6 -skipTriallelic 1 -out $DIR/output/calmas_region_snpcall
 ```
 Look at the file `less $DIR/output/calmas_region_snpcall.mafs.gz`, which contains only sites called as variable.
@@ -512,7 +512,7 @@ have a file containing them, which we don't need to write again, so we can suppr
 BAMS as input. We'll use many of the same quality controls as last time.
 
 ```bash
-$ANGSD -b $BAMLIST -ref $CICHREF -r chr7:1-600000 -sites ~/ngs_intro/output/qc_sites.pos \
+angsd -b $BAMLIST -ref $CICHREF -r chr7:1-600000 -sites ~/ngs_intro/output/qc_sites.pos \
 -remove_bads 1 -uniqueOnly 1 -only_proper_pairs 1 -minQ 20 -minMapQ 20 -baq 1 -C 50 \
 -GL 1 -doMajorMinor 1 -doMaf -1 -SNP_pval 1e-6 -skipTriallelic 1 -doPost 1 -doGeno 8 -out $DIR/output/calmas_region_genocall
 ```
@@ -614,7 +614,7 @@ demonstration of one approach.
 First, we calculate genotype posteriors in binary format.
 
 ```bash
-$ANGSD -b $BAMLIST -ref $CICHREF -r chr7:1-600000 -sites ~/ngs_intro/output/qc_sites.pos \
+angsd -b $BAMLIST -ref $CICHREF -r chr7:1-600000 -sites ~/ngs_intro/output/qc_sites.pos \
 -remove_bads 1 -uniqueOnly 1 -only_proper_pairs 1 -minQ 20 -minMapQ 20 -baq 1 -C 50 \
 -GL 1 -doMajorMinor 1 -doMaf -1 -SNP_pval 1e-6 -skipTriallelic 1 -doPost 1 -doGeno 32 -out $DIR/output/calmas_region_genocall_binary
 ```
@@ -727,7 +727,7 @@ a HWE relationship between genotype and allele frequencies. For other `-doSaf` m
 ancetral state FASTA in conjunction with specifying `-fold 1`
 
 ```bash
-$ANGSD -glf10_text $DIR/output/calmas_region.glf.gz -nInd 40 -fai $CICHREF.fai \
+angsd -glf10_text $DIR/output/calmas_region.glf.gz -nInd 40 -fai $CICHREF.fai \
 -doSaf 1 -anc $CICHREF -out $DIR/output/calmas_region_folded
 ```
 This produces 3 files: a binary *.saf file which contains the log-scaled allele frequency likelihoods at all sites, it's associated *.saf.idx index file,
@@ -920,7 +920,7 @@ The global SFS prior, along with the per site allele frequency likelihoods from 
 probability distribution over all of the allele frequencies at particular site. Try it.
 
 ```bash
-$ANGSD -glf10_text $DIR/output/calmas_region.glf.gz -nInd 40 -fai $CICHREF.fai -doSaf 1 -pest $DIR/output/calmas_region_folded.sfs -anc $CICHREF -out $DIR/output/calmas_region_folded_post
+angsd -glf10_text $DIR/output/calmas_region.glf.gz -nInd 40 -fai $CICHREF.fai -doSaf 1 -pest $DIR/output/calmas_region_folded.sfs -anc $CICHREF -out $DIR/output/calmas_region_folded_post
 ```
 Now take a look at the output. It's same format as the *.saf output from before except now instead of likelihoods the values are posterior
 probabilites of allele frequencies in log scale.
