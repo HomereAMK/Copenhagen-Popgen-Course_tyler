@@ -23,19 +23,19 @@ Make directories and set environmental variables for this session
 
 ```bash
 # set up directories
-
-mkdir ~/ngs_analysis
-mkdir ~/ngs_analysis/output
+cd /home/projects/dp_00007/people/hmon/SummerCPH22
+mkdir ngs_analysis
+mkdir ngs_analysis/output
 
 # set environment variables
 
-DIR=~/ngs_analysis
-DATDIR=/ricco/data/tyler
+DIR=/home/projects/dp_00007/people/hmon/SummerCPH22/ngs_analysis
+DATDIR=/home/projects/dp_00007/people/hmon/SummerCPH22/tyler
 BAMLIST=$DATDIR/cichlid_bams.list
 CICHREF=$DATDIR/ref/GCA_900246225.3_fAstCal1.2_genomic_chromnames_mt.fa
 BAMDIR=$DATDIR/bams
 SCRIPTS=$DATDIR/scripts
-ANGSD=/ricco/data/tyler/prog/bin/angsd
+#ANGSD=/ricco/data/tyler/prog/bin/angsd
 ```
 If you did not yet complete the Introduction to NGS Data excercises you'll need to copy over the quality controlled list of sites,
 which I've provided a copy of (skip the following step if you completed the bcftools filtering):
