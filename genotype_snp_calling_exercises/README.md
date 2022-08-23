@@ -1,4 +1,4 @@
-Estimation of allele frequencies, SNP calling, and genotype calling from NGS data
+Estimation of allele frequencies, SNP calling, and genotype calling from NGS data-- homere´s modification
 =================================================================================
 
 For these excercises you will use whole genome sequencing data from 40 individuals of *Astatotilapia calliptera* from the crater 
