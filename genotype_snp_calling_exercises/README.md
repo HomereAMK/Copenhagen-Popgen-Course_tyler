@@ -148,7 +148,7 @@ We'll calculate GLs using the SAMtools likelihood model `-GL 1` (see `$ANGSD -GL
 that we can easily examine. This will take ~2.5 minutes.
 
 ```bash
-$ANGSD -b $BAMLIST -ref $CICHREF -r chr7:1-600000 -sites ~/ngs_intro/output/qc_sites.pos \
+angsd -b $BAMLIST -ref $CICHREF -r chr7:1-600000 -sites ~/ngs_intro/output/qc_sites.pos \
 -remove_bads 1 -uniqueOnly 1 -only_proper_pairs 1 -minQ 20 -minMapQ 20 -baq 1 -C 50 \
 -setMinDepth 40 -setMaxDepth 700 -doCounts 1 -GL 1 -doGlf 4 -out $DIR/output/calmas_region
 ```
