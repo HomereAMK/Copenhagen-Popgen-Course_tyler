@@ -68,7 +68,7 @@ which I've provided a copy of (skip the following step if you completed the bcft
 cp tyler/output/qc_sites.pos tyler/ngs_intro/output/
 
 # index the sites file
-angsd sites index ~/ngs_intro/output/qc_sites.pos
+angsd sites index ngs_intro/output/qc_sites.pos
 ```
 
 We will perform most analyses with the program [ANGSD](http://www.popgen.dk/angsd/index.php/ANGSD) which is also accurate for low - medium coverage NGS data.
@@ -208,7 +208,7 @@ INDNUM=$(grep -n "CMASS6608007.bam" $BAMLIST | cut -f1 -d':')
 echo "$INDNUM"
 
 # So this individual is at row 25 in the bam list. Now we can extract their likelihoods.
-
+	
 zcat $DIR/output/calmas_region.glf.gz | grep -m 1 $'^chr7\t10005\t' | cut -f 3- | perl -se '$start=($n-1)*10; @arr = split(/\t/,<>); print "@arr[$start .. $start+9]\n"' -- -n=$INDNUM
 ```
 Since the likelihoods have been scaled to the most likely and log-transformed, the most likely genotype will
