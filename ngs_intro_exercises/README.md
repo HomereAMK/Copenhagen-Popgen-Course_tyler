@@ -349,8 +349,26 @@ BAM4=$BAMDIR/CMASS6169445.bam
 BAM5=$BAMDIR/CMASS6169461.bam
 BAM6=$BAMDIR/CMASS6169443.bam
 
-(( echo -e "CHR\tPOS\t$BAM1\t$BAM2\t$BAM3\t$BAM4\t$BAM5\t$BAM6" | sed "s;\($BAMDIR\/\|.bam\);;g" ); \
-(samtools depth -a -r chr7:18059155-18120834 $BAM1 $BAM2 $BAM3 $BAM4 $BAM5 $BAM6)) > $DIR/output/cichlid_region_depth.txt
+#oyster data
+BAM1=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/CLEW_03_EKDL220000317-1a-AK19153-AK31203_HWHVMDSX2_L1.nocig.dedup_clipoverlap.minq30realigned.bam
+BAM2=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/HYPP_04_EKDL220000316-1a-AK19284-AK31207_HWHMNDSX2_L4.nocig.dedup_clipoverlap.minq30realigned.bam
+BAM3=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/HYPP_06_EKDL220000315-1a-AK19202-AK18625_HWHMNDSX2_L1and2Merged.nocig.dedup_clipoverlap.minq30realigned.bam
+BAM4=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/LURI_08_EKDL220000315-1a-AK31210-AK31211_HWHMNDSX2_L1and2Merged.nocig.dedup_clipoverlap.minq30realigned.bam
+BAM5=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/NISS_08_EKDL220000316-1a-AK19154-AK31214_HWHMNDSX2_L4.nocig.dedup_clipoverlap.minq30realigned.bam
+BAM6=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/NISS_13_EKDL220000317-1a-AK31212-AK31213_HWHVMDSX2_L1.nocig.dedup_clipoverlap.minq30realigned.bam
+BAM7=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/ORIS_17_EKDL220000315-1a-AK31218-AK31219_HWHMNDSX2_L1and2Merged.nocig.dedup_clipoverlap.minq30realigned.bam
+BAM8=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/ORIS_19_EKDL220000315-1a-AK19073-AK31217_HWHMNDSX2_L1and2Merged.nocig.dedup_clipoverlap.minq30realigned.bam
+BAM9=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/PONT_03_EKDL220000315-1a-AK19049-AK31216_HWHMNDSX2_L1and2Merged.nocig.dedup_clipoverlap.minq30realigned.bam
+BAM10=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/PONT_13_EKDL220000317-1a-AK31208-AK31209_HWHVMDSX2_L1.nocig.dedup_clipoverlap.minq30realigned.bam
+BAM11=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/TRAL_19_EKDL220000317-1a-AK19261-AK31202_HWHVMDSX2_L1.nocig.dedup_clipoverlap.minq30realigned.bam
+BAM11=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/TRAL_19_EKDL220000317-1a-AK19261-AK31202_HWHVMDSX2_L1.sort.minq30.bam
+BAM12=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/VAGS_06_EKDL220000317-1a-AK31205-AK31206_HWHVMDSX2_L1.nocig.dedup_clipoverlap.minq30realigned.bam
+BAM13=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/VAGS_13_EKDL220000316-1a-AK19085-AK31204_HWHMNDSX2_L4.nocig.dedup_clipoverlap.minq30realigned.bam
+BAM14=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/WADD_12_EKDL220000316-1a-AK19239-AK22948_HWHMNDSX2_L4.nocig.dedup_clipoverlap.minq30realigned.bam
+BAM15=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/WADD_13_EKDL220000317-1a-AK19244-AK31215_HWHVMDSX2_L1.nocig.dedup_clipoverlap.minq30realigned.bam
+
+(( echo -e "CHR\tPOS\t$BAM1\t$BAM2\t$BAM3\t$BAM4\t$BAM5\t$BAM6\t$BAM7\t$BAM8\t$BAM9\t$BAM10\t$BAM11\t$BAM12\t$BAM13\t$BAM14\t$BAM15" | sed "s;\($BAMDIR\/\|.bam\);;g" ); \
+(samtools depth -a -r scaffold1 $BAM1 $BAM2 $BAM3 $BAM4 $BAM5 $BAM6 $BAM7 $BAM8 $BAM9 $BAM10 $BAM11 $BAM12 $BAM13 $BAM14 $BAM15)) > $DIR/output/oystersHC_region_depth.txt
 ```
 
 ```bash
