@@ -374,8 +374,8 @@ BAM15=/home/projects/dp_00007/people/hmon/HighCovOyster_preprocess/06_realigned/
 ```bash
 # Calculate depth relative to genome-wide average and plot a depth profile
 # Note: calmas_meta_sub.txt file contains cichlid metadata including the average genome-wide sequence depth.
-
-$SCRIPTS/plot_depth_region.R $DIR/output/cichlid_region_depth.txt $DATDIR/calmas_meta_sub.txt $DIR/output/region_depth_profile
+#oyster hc dataset
+$SCRIPTS/plot_depth_region.R $DIR/output/oystersHC_region_depth.txt $DATDIR/calmas_meta_sub.txt $DIR/output/region_depth_profile
 ```
 <details>
 
